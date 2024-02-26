@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Truffle Embed</title>
+  <style>
+    body {
+      background-color: white;
+    }
+  </style>
+</head>
+<body>
+  
+  <h1>Truffle embed</h1>
+
+  <button id="toggle-border-button">Toggle Border</button>
+  <button id="toggle-size-button">Toggle Size</button>
+
+  <p>
+    <strong>Org slug: </strong><span id="org-slug-text">null</span>
+  </p>
+
+</body>
+<script type="module">
+  import { embed, org as orgClient } from 'https://npm.tfl.dev/@trufflehq/sdk@0.1.2'
+
+  let hasBorder = false;
+  let isSmall = true;
+
+  const toggleBorderButton = document.getElementById("toggle-border-button");
+  const toggleSizeButton = document.getElementById("toggle-size-button");
+  const orgSlugText = document.getElementById("org-slug-text");
+
+  toggleBorderButton.onclick = () => {
+    if (hasBorder) {
+      embed.setStyles({
+        border: "none"
+      })
+      hasBorder = false
+
+    } else {
+      embed.setStyles({
+        border: "5px solid red"
+      })
+      hasBorder = true
+    }
+  }
+
+  toggleSizeButton.onclick = () => {
+    if (isSmall) {
+      embed.setStyles({
+        width: "800px",
+        height: "800px"
+      })
+      isSmall = false
+
+    } else {
+      embed.setStyles({
+        width: "600px",
+        height: "600px"
+      })
+      isSmall = true
+    }
+  }
+
+  orgClient.observable.subscribe({
+    next: (org) => {
+      console.log("org", org)
+      orgSlugText.innerText = org?.slug
+    }
+  })
+  
+</script>
+</html>
