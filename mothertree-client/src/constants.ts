@@ -1,5 +1,5 @@
 export const DEFAULT_MOTHERTREE_API_URL =
-  'wss://mothertree.staging.bio/graphql';
+  'wss://mothertree.truffle.vip/graphql';
 
 export const MOTHERTREE_PUBLIC_ES256_KEY =
   '-----BEGIN PUBLIC KEY-----\n' +
