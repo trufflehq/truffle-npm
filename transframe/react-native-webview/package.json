@@ -1,0 +1,6 @@
+{
+  "name": "@trufflehq/transframe/react-native-webview",
+  "main": "../dist/interfaces/react-native-webview/index.js",
+  "module": "../dist/interfaces/react-native-webview/index.mjs",
+  "types": "../dist/interfaces/react-native-webview/index.d.ts"
+}

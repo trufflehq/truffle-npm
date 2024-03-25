@@ -219,7 +219,7 @@ export class TransframeConsumer<SourceApi extends TransframeSourceApi<ContextFro
   ) => {
 
     if (!this._isConnected && !this._isConnecting) {
-      throw new Error('Cannot call any api methods: Not connected to provider');
+      throw new Error(`Cannot call any api methods: Not connected to provider ${this._options?.namespace ?? ''}`);
     } else if (this._isConnecting) {
       // if we're connecting, queue up the call and await a promise that will resolve when the connection is complete
       await new Promise((resolve, reject) => {
