@@ -202,7 +202,7 @@ export class MothertreeClient {
       `
         query {
           countable(input: {
-            path: "@truffle/tips/_Countable/sparks"
+            path: "@truffle/tips/_Countable/sparks:@truffle"
           }) {
             id
             counter(input: {
