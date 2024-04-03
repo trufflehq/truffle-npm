@@ -1,6 +1,6 @@
 {
   "name": "@trufflehq/transframe",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "A library for creating apis for frames",
   "keywords": [
     "truffle"
@@ -23,7 +23,8 @@
     "dist",
     "background-script",
     "iframe",
-    "react-native-webview"
+    "react-native-webview-to-web",
+    "web-to-react-native-webview"
   ],
   "exports": {
     "./package.json": "./package.json",
@@ -42,10 +43,15 @@
       "require": "./dist/interfaces/background-script/index.js",
       "types": "./dist/interfaces/background-script/index.d.ts"
     },
-    "./react-native-webview": {
-      "import": "./dist/interfaces/react-native-webview/index.mjs",
-      "require": "./dist/interfaces/react-native-webview/index.js",
-      "types": "./dist/interfaces/react-native-webview/index.d.ts"
+    "./react-native-webview-to-web": {
+      "import": "./dist/interfaces/react-native-webview-to-web/index.mjs",
+      "require": "./dist/interfaces/react-native-webview-to-web/index.js",
+      "types": "./dist/interfaces/react-native-webview-to-web/index.d.ts"
+    },
+    "./web-to-react-native-webview": {
+      "import": "./dist/interfaces/web-to-react-native-webview/index.mjs",
+      "require": "./dist/interfaces/web-to-react-native-webview/index.js",
+      "types": "./dist/interfaces/web-to-react-native-webview/index.d.ts"
     }
   },
   "sideEffects": [

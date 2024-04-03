@@ -1,7 +1,7 @@
 import type { WebView, WebViewMessageEvent } from "react-native-webview";
 import type { RefObject } from "react";
 
-export interface ReactNativeWebviewProviderInterfaceOptions {
+export interface ReactNativeWebviewToWebProviderInterfaceOptions {
   webviewRef: RefObject<WebView>;
   addMessageListener: (listener: (message: WebViewMessageEvent) => void) => void;
   removeMessageListener: (listener: (message: WebViewMessageEvent) => void) => void;
@@ -11,7 +11,7 @@ export interface ReactNativeWebviewProviderInterfaceOptions {
   allowedOrigins?: string[];
 }
 
-export type ReactNativeWebviewInterfaceContext = {
+export type ReactNativeWebviewToWebInterfaceContext = {
 }
 
 declare global {

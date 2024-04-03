@@ -233,7 +233,7 @@ export class TransframeConsumer<SourceApi extends TransframeSourceApi<ContextFro
 
     // if the method is not available, throw an error
     if (!this.hasMethod(methodString)) {
-      throw new Error(`Method ${methodString} is not available`);
+      throw new Error(`Method ${methodString} is not available for namespace ${this._options?.namespace ?? ''}`);
     }
 
     // filter out any callbacks and store them
@@ -269,7 +269,7 @@ export class TransframeConsumer<SourceApi extends TransframeSourceApi<ContextFro
       // race with a timeout
       new Promise((_, reject) => {
         setTimeout(() => {
-          reject(new Error("RPC request timed out. Check that you can connect to the provider and that the method exists."));
+          reject(new Error(`RPC request timed out (${this._options?.namespace}:${methodString}). Check that you can connect to the provider and that the method exists.`));
         }, this._options?.apiCallTimeout ?? DEFAULT_API_CALL_TIMEOUT);
       })
     ])

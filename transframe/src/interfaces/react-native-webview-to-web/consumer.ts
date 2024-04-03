@@ -1,6 +1,6 @@
 import type { TransframeConsumerInterface } from "../types";
 
-export class ReactNativeWebviewConsumerInterface
+export class ReactNativeWebviewToWebConsumerInterface
   implements TransframeConsumerInterface
 {
   private _isConnected: boolean = false;

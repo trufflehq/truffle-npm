@@ -2,19 +2,19 @@ import type { WebViewMessageEvent } from "react-native-webview";
 import type { RPCReplyFunction } from "../../rpc/types";
 import type { Context } from "../../types";
 import type { TransframeProviderInterface } from "../types";
-import type { ReactNativeWebviewInterfaceContext, ReactNativeWebviewProviderInterfaceOptions } from "./types";
+import type { ReactNativeWebviewToWebInterfaceContext, ReactNativeWebviewToWebProviderInterfaceOptions } from "./types";
 
 // it isn't really documented, but react-native-webview has a postMessage method
 // https://github.com/react-native-webview/react-native-webview/blob/4197bb42ce79406ff20c7e5637f78e44ca45474c/example/examples/CustomMenu.tsx#L74
 
-export class ReactNativeWebviewProviderInterface implements 
-  TransframeProviderInterface<never, ReactNativeWebviewInterfaceContext> {
+export class ReactNativeWebviewToWebProviderInterface implements 
+  TransframeProviderInterface<never, ReactNativeWebviewToWebInterfaceContext> {
 
-  private _options: ReactNativeWebviewProviderInterfaceOptions;
+  private _options: ReactNativeWebviewToWebProviderInterfaceOptions;
   private _isListening: boolean = false;
-  private _messageHandler: (message: WebViewMessageEvent, reply: RPCReplyFunction, context: Context<ReactNativeWebviewInterfaceContext>) => void = () => {};
+  private _messageHandler: (message: WebViewMessageEvent, reply: RPCReplyFunction, context: Context<ReactNativeWebviewToWebInterfaceContext>) => void = () => {};
 
-  constructor(options: ReactNativeWebviewProviderInterfaceOptions) {
+  constructor(options: ReactNativeWebviewToWebProviderInterfaceOptions) {
     this._options = options;
   }
 
@@ -23,8 +23,7 @@ export class ReactNativeWebviewProviderInterface implements
     if (this._options?.allowedOrigins?.length) {
       // can't use new URL(...).origin because it doesn't work with react-native
       const parts = message.nativeEvent.url.split("/");
-      let origin = parts.slice(0, 3).join("/");
-      if (parts[2].includes(':')) origin = parts.slice(0, 4).join("/");
+      const origin = parts.slice(0, 3).join("/");
       if (!this._options.allowedOrigins.includes(origin)) return;
     }
 
@@ -45,7 +44,7 @@ export class ReactNativeWebviewProviderInterface implements
     // I'm not sure what we should use to identify the consumer...
     // TODO: ideally we identify the iframe so we don't have to relay to all truffle iframes
     const fromId = undefined;
-    const context: Context<ReactNativeWebviewInterfaceContext> = {
+    const context: Context<ReactNativeWebviewToWebInterfaceContext> = {
       fromId,
     };
     
@@ -67,7 +66,7 @@ export class ReactNativeWebviewProviderInterface implements
     this._isListening = false;
   }
 
-  onMessage(callback: (message: unknown, reply: RPCReplyFunction, context: Context<ReactNativeWebviewInterfaceContext>) => void): void {
+  onMessage(callback: (message: unknown, reply: RPCReplyFunction, context: Context<ReactNativeWebviewToWebInterfaceContext>) => void): void {
     this._messageHandler = callback;
   }
 
