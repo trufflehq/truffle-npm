@@ -21,6 +21,7 @@ export class ReactNativeWebviewToWebProviderInterface implements
   private _messageHandlerWrapper = (message: WebViewMessageEvent) => {        
     // only process messages from the allowed origins
     if (this._options?.allowedOrigins?.length) {
+      if (!message.nativeEvent.url) return;
       // can't use new URL(...).origin because it doesn't work with react-native
       const parts = message.nativeEvent.url.split("/");
       const origin = parts.slice(0, 3).join("/");
