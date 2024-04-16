@@ -1,6 +1,6 @@
 {
   "name": "@trufflehq/sdk",
-  "version": "0.5.0-alpha.12",
+  "version": "0.6.0-alpha.2",
   "description": "The official javascript SDK for Truffle",
   "keywords": [
     "truffle",
@@ -33,12 +33,7 @@
     "format": "eslint --ext .ts,.tsx,.js,.jsx src examples --fix --debug"
   },
   "dependencies": {
-    "@trufflehq/mothertree-client": "^0.1.0-alpha.15",
-    "@trufflehq/transframe": "^0.1.0",
-    "@urql/core": "^3.1.1",
-    "@urql/exchange-auth": "^1.0.0",
-    "graphql-ws": "^5.13.1",
-    "wonka": "^6.1.2"
+    "@trufflehq/transframe": "^0.1.0"
   },
   "devDependencies": {
     "@types/jest": "^29.2.6",

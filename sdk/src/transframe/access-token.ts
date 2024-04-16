@@ -1,7 +1,7 @@
 import { getEmbedConsumer } from './embed-consumer';
 
-export async function getAccessToken(): Promise<string> {
-  // TODO: support auth without extension
-  const token = (await getEmbedConsumer().call('userGetAccessToken')) as string;
-  return token;
+export async function getAccessToken(onChange?: (accessToken: string) => void): Promise<string> {
+  const accessToken = (await getEmbedConsumer().call('userGetAccessToken')) as string;
+  if (onChange) getEmbedConsumer().call('userOnAccessTokenChange', onChange);
+  return accessToken;
 }
