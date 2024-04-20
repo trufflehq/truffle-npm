@@ -22,7 +22,7 @@ let embedConsumer: TransframeConsumer<EmbedSourceApi>;
 export function getEmbedConsumer() {
   if (!embedConsumer) {
     embedConsumer = createIframeConsumer({
-      namespace: 'truffle-injected-unprivileged-embed-api-v1',
+      namespace: 'orchestrator-to-anyweb-unprivileged-api-v1',
       useDirectParent: true,
     });
   }

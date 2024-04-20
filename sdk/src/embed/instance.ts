@@ -1,4 +1,4 @@
-import { getEmbedConsumer } from '../transframe/embed-consumer';
+import { getEmbedConsumer } from '../transframe/orchestrator-to-anyweb-unprivileged-consumer';
 import { Embed } from './embed';
 
 let embed: Embed;

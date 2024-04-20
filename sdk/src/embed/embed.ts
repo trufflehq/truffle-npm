@@ -1,5 +1,5 @@
 import { TransframeConsumer } from "@trufflehq/transframe";
-import { EmbedSourceApi, getEmbedConsumer } from "../transframe/embed-consumer";
+import { EmbedSourceApi, getEmbedConsumer } from "../transframe/orchestrator-to-anyweb-unprivileged-consumer";
 import { EnvironmentInfo, PageInfo } from "../types/embed";
 
 type Styles = Record<string, unknown>;
