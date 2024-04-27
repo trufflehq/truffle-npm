@@ -10,8 +10,10 @@ export class ReactNativeWebviewToWebConsumerInterface
   constructor() {
     this._messageHandler = () => {};
     this._messageHandlerWrapper = (event) => {
-      if (typeof event.data === "string") this._messageHandler(JSON.parse(event.data));
-      else this._messageHandler(event.data);
+      try {
+        if (typeof event.data === "string" && event.data.startsWith('{')) this._messageHandler(JSON.parse(event.data));
+        else this._messageHandler(event.data);
+      } catch {}
     }
   }
 
