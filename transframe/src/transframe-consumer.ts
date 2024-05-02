@@ -219,7 +219,7 @@ export class TransframeConsumer<SourceApi extends TransframeSourceApi<ContextFro
   ) => {
 
     if (!this._isConnected && !this._isConnecting) {
-      throw new Error(`Cannot call any api methods: Not connected to provider ${this._options?.namespace ?? ''}`);
+      throw new Error(`Cannot call any api methods: Not connected to provider ${this._options?.namespace ?? ''} ${typeof window !== 'undefined' ? window.location?.href : ''}`);
     } else if (this._isConnecting) {
       // if we're connecting, queue up the call and await a promise that will resolve when the connection is complete
       await new Promise((resolve, reject) => {
@@ -233,7 +233,7 @@ export class TransframeConsumer<SourceApi extends TransframeSourceApi<ContextFro
 
     // if the method is not available, throw an error
     if (!this.hasMethod(methodString)) {
-      throw new Error(`Method ${methodString} is not available for namespace ${this._options?.namespace ?? ''}`);
+      throw new Error(`Method ${methodString} is not available for namespace ${this._options?.namespace ?? ''} ${typeof window !== 'undefined' ? window.location?.href : ''}`);
     }
 
     // filter out any callbacks and store them

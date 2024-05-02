@@ -25,6 +25,7 @@ export class IframeProviderInterface implements
     // according to typescript, this can be null?
     const eventSource = event.source;
     if (!eventSource) {
+      console.log("event source is null", event, window.location.href)
       throw new Error("Somehow the event source is null");
     }
 
